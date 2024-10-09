@@ -11,7 +11,7 @@ def test_subtraction():
 
 def test_multiply():
     '''Test that multiply function works '''    
-    assert Calculator.mulitply(2,2) == 4
+    assert Calculator.multiply(2,2) == 4
 
 def test_divide():
     '''Test that divide function works '''    

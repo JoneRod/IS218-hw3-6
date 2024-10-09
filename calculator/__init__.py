@@ -5,24 +5,24 @@ from decimal import Decimal
 from typing import Callable
 
 class Calculator:
-     @staticmethod
-    def _perform_operation(a: Decimal, b:Decimal), operation: Callable[[Decimal, Decimal], Decimal] -> Decimal:
+    @staticmethod
+    def _perform_operation(a: Decimal, b: Decimal, operation: Callable[[Decimal, Decimal], Decimal]) -> Decimal:
         calculation = Calculation.create(a, b, operation)
         Calculations.add_calculation(calculation)
         return calculation.perform()
 
     @staticmethod
-    def add(a: Decimal, b:Decimal) -> Decimal:
+    def add(a: Decimal, b: Decimal) -> Decimal:
         return Calculator._perform_operation(a, b, add)
 
     @staticmethod
     def subtract(a: Decimal, b:Decimal) -> Decimal:
-        return calculation._perform_operation(a, b, subtract)
+        return Calculator._perform_operation(a, b, subtract)
 
     @staticmethod
-    def mulitply(a: Decimal, b:Decimal) -> Decimal:
-        return calculation._perform_operation(a, b, multiply)
+    def multiply(a: Decimal, b:Decimal) -> Decimal:
+        return Calculator._perform_operation(a, b, multiply)
 
     @staticmethod
     def divide(a: Decimal, b:Decimal) -> Decimal:
-        return calculation._perform_operation(a, b, divide)
+        return Calculator._perform_operation(a, b, divide)

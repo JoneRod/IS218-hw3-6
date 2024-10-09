@@ -1,9 +1,9 @@
 '''My Calculator Test'''
-from calculator.operations import add, multiply, subtract, divide
 import pytest
 from calculator.calculation import Calculation
 from calculator.calculations import Calculations
 from calculator.operations import add, subtract
+from decimal import Decimal
 
 @pytest.fixture
 def setup_calculations():
@@ -21,7 +21,7 @@ def test_get_history(setup_calculations):
     """Test retrieving the entire calculation history."""
     history = Calculations.get_history()
     assert len(history) == 2, "History does not contain the expected number of calculations"
-    
+
 def test_clear_history(setup_calculations):
     """Test clearing the entire calculation history."""
     Calculations.clear_history()
