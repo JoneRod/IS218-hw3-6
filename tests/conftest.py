@@ -12,6 +12,7 @@ def generate_test_data(num_records):
         'multiply': multiply,
         'divide': divide
     }
+    
     for _ in range(num_records):
         a = Decimal(fake.random_number(digits=2))
         b = Decimal(fake.random_number(digits=2)) if _ % 4 != 3 else Decimal(fake.random_number(digits=1))
