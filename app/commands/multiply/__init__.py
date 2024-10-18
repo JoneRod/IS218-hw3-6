@@ -1,6 +1,7 @@
+import sys
 from app.commands import Command
 
-class AddCommand(Command):
+class MultiplyCommand(Command):
     def execute(self, params=None):
         if len(params) == 2:
             a, b == params

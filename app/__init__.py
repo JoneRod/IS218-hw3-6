@@ -1,32 +1,34 @@
+import pkgutil
+import importlib
 from app.commands import CommandHandler
-from app.commands.add import AddCommand
-from app.commands.subtract import SubtractCommand
-from app.commands.multiply import MultiplyCommand
-from app.commands.divide import DivideCommand
-from app.commands.menu import MenuCommand
-from app.commands.exit import ExitCommand
-
+from app.commands import Command
 
 class App:
-    def__init__(self):
+    def __init__(self):
         self.command_handler = CommandHandler()
 
+    def load_plugins(self):
+        plugins_dir = 'plugins'
+
+        for _, plugin_name, is_pkg in pkgutil.iter_modules(plugins_dir):
+            if not is_pkg:
+                try:
+                    plugin_module = importlib.import_module(f'plugins.{plugin_name}')
+                    for item_name in dir(plugin_module):
+                        item = getattr(plugin_module, item_name)
+                    
+                        if isinstance(item, type) and issubclass(item, Command): 
+                            self.command_handler.register_command(plugin_name, item())   
+                except ImportError as e:
+                    print(f"Error Importing plugin {plugin_name}: {e}")
+                except Exception as e:
+                    print(f"Error loading plugin {plugin_name}: {e}")
+
     def start(self):
-        self.command_handler.register_command("add", AddCommand())
-        self.command_handler.register_command("subtract", SubtractCommand())
-        self.command_handler.register_command("divide", DivideCommand())
-        self.command_handler.register_command("multiply", MultiplyCommand())
-        self.command_handler.register_command("menu", MenuCommand())
-        self.command_handler.register_command("exit", ExitCommand())
-
-
+        self.load_plugins()
         print("Type 'exit' to exit.")
         while True:
-            self.command_handler.execute_command(input(">>> ").strip())
-
-
-
-
-
-
-
+            user_input = input(">>> ").strip()
+            if user_input == 'exit':
+                break
+            self.command_handler.execute_command(user_input)
