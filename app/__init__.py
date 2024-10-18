@@ -8,7 +8,7 @@ class App:
         self.command_handler = CommandHandler()
 
     def load_plugins(self):
-        app.commands = 'app.plugins'
+        plugins_dir = 'app.commands'
         for _, plugin_name, is_pkg in pkgutil.iter_modules([plugins_dir.replace('.', '/')]):
             if not is_pkg:
                 try:
