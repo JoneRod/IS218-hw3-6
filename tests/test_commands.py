@@ -7,7 +7,7 @@ def test_app_add_command(capfd, monkeypatch):
     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
 
     app = App()
-    with pytest.raises(SystemExit) as e:
+    with pytest.raises(sys.exit) as e:
         app.start()
     
     assert str(e.value) == "Exiting...", "The app did not exit as expected"
@@ -18,7 +18,7 @@ def test_app_menu_command(capfd, monkeypatch):
     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
 
     app = App()
-    with pytest.raises(SystemExit) as e:
+    with pytest.raises(sys.exit) as e:
         app.start()
 
     assert str(e.value) == "Exiting...", "The app did not exit as expected"
