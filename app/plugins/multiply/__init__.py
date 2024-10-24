@@ -6,5 +6,5 @@ class MultiplyCommand(Command):
         if len(params) == 2:
             a, b == params
             if operation == 'multiply':
-                print(f'{a} x {b} = {int(a) x int(b)}')
+                print(f'{a} x {b} = {int(a) * int(b)}')
         print(params)
