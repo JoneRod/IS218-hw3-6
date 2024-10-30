@@ -1,1 +1,1 @@
-# New Calculator HW 3
+# Getting Ready For Product: Devops, CLoud COmputing, Enviroment Variables, Logging, and Continuous Integration

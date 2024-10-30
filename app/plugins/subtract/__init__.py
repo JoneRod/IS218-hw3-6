@@ -1,5 +1,7 @@
 import sys
 from app.commands import Command
+import logging
+
 
 class SubtractCommand(Command):
     def execute(self, params=None):
